@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Website</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: lightblue;
+        }
+
+        .hero {
+            background-image: url('banner.png');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            position: relative;
+        }
+
+        .welcome-text {
+            font-size: 2.5rem;
+            color: rgb(245, 241, 242);
+            font-family: 'Times New Roman', Times, serif;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .welcome-text span {
+            display: inline-block;
+            animation: slideIn 10s ease-in-out infinite;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            50% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .sports-box {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 500px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .sports-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .sports-box .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .sports-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 100px;
+            text-align: center;
+        }
+
+        .sports-box .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .sports-box .btn-group .btn {
+            width: 44%;
+        }
+
+        footer {
+    background-color: white;
+    padding: 5px;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo img {
+    max-width: 250px;
+}
+
+
+.footer-contact, .footer-newsletter {
+    margin: 0px 0;
+}
+
+
+.footer-copy {
+    margin-top: 10px;
+}
+
+
+        .sports-nav {
+            margin: 10px 85px;
+            display: flex;
+            background-color: lightblue;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .sports-nav ul {
+            padding-left: 0;
+            display: flex;
+            background-color: lightblue;
+            flex-wrap: wrap;
+            list-style-type: none;
+            margin-bottom: 0;
+        }
+
+        .sports-nav ul li {
+            margin: 5px;
+        }
+
+        .sports-nav .logo img {
+            border-radius: 50%;
+            height: 70px;
+            width: 70px;
+            object-fit: cover;
+        }
+
+        .sports-nav .logo {
+            margin-right: 20px;
+        }
+
+        .features-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            background-color: lightblue;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        /* Vertical Navigation Styles */
+        .vertical-nav {
+            width: 250px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: whitesmoke;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1000;
+        }
+
+        .vertical-nav a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 15px;
+            color: black;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .vertical-nav a:hover {
+            background-color: lightblue;
+        }
+
+        .vertical-nav .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 26px;
+            color: black;
+        }
+
+        .vertical-nav-btn {
+            font-size: 24px;
+            cursor: pointer;
+            color: black;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            margin-right: -40px;
+            margin-left: -60px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .sports-nav {
+                flex-direction: row;
+                align-items: center;
+               
+                margin-top: 15px;
+            }
+
+            .sports-nav ul {
+                flex-direction: row;
+                align-items: center;
+                padding: 0;
+
+            }
+
+            .sports-nav ul li {
+                margin: 10px 0;
+            }
+
+            .features-nav {
+                flex-direction:row;
+                gap: 5px;
+            }
+
+            .auth-buttons {
+                margin-top: 25;
+                flex-direction: row;
+            }
+
+            .hero {
+                height: 300px;
+            }
+
+            .welcome-text {
+                font-size: 1.8rem;
+            }
+
+            .sports-box {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .sports-box .btn-group .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                height: 200px;
+            }
+
+            .welcome-text {
+                font-size: 1.5rem;
+            }
+
+            .vertical-nav {
+                width: 200px;
+                left: -200px;
+            }
+
+            .sports-nav .logo img {
+                height: 50px;
+            }
+
+            .sports-box {
+                padding: 15px;
+            }
+
+            .sports-box .btn {
+                margin: 3px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Vertical Navigation -->
+    <div id="myVerticalNav" class="vertical-nav">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+        <a href="index.html">HOME</a>
+        <a href="fetch_tournaments.php">AVAILABLE TOURNAMENTS</a>
+        <a href="create_tournament.php">ADD A TOURNAMENT</a>
+        <a href="cricketsetup.php">SCORECARD</a>
+        <a href="chatbot.php">ASK ANYTHING</a>
+        <a href="dashboardlogin.php">ADMIN</a>
+        <a href="contact.php">CONTACT US</a>
+    </div>
+
+    <!-- Sports Navigation List -->
+    <section class="sports-nav container">
+        <button class="vertical-nav-btn" onclick="openNav()">&#9776;</button>
+        <div class="logo">
+            <img src="logoo.png" alt="Logo" height="60">
+        </div>
+        <ul>
+            <li><a href="1criket.html" class="btn btn-primary">CRICKET</a></li>
+            <li><a href="1football.html" class="btn btn-primary">FOOTBALL</a></li>
+            <li><a href="1golf.html" class="btn btn-primary">GOLF</a></li>
+            <li><a href="1hockey.html" class="btn btn-primary">HOCKEY</a></li>
+            <li><a href="1badminton.html" class="btn btn-primary">BADMINTON</a></li>
+            <li><a href="1tennis.html" class="btn btn-primary">TENNIS</a></li>
+            <li><a href="1basketball.html" class="btn btn-primary">BASKETBALL</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <a href="login.php" class="btn btn-dark">LOGIN</a>
+            <a href="register.php" class="btn btn-warning">SIGN UP</a>
+        </div>
+    </section>
+
+    <!-- Feature Buttons -->
+    <section class="features-nav">
+        <a href="index.html" class="btn btn-outline-dark">HOME</a>
+        <a href="fetch_tournaments.php" class="btn btn-outline-dark">AVAILABLE TOURNAMENTS</a>
+        <a href="create_tournament.php" class="btn btn-outline-dark">ADD A TOURNAMENT</a>
+        <a href="cricketsetup.php" class="btn btn-outline-dark">SCORECARD</a>
+        <a href="chatbot.php" class="btn btn-outline-dark">ASK ANYTHING</a>
+        <a href="dashboardlogin.php" class="btn btn-outline-dark">ADMIN</a>
+        <a href="contact.php" class="btn btn-outline-dark">CONTACT US</a>
+    </section>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="welcome-text">
+            <span>WELCOME TO THE FANTASY SPORTS MANAGEMENT SYSTEM</span>
+        </div>
+    </header>
+
+    <!-- Sports Boxes Section -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <!-- Cricket Box -->
+            <div class="col-md-6 mb-4 d-flex justify-content-center">
+                <div class="sports-box">
+                    <img src="cricket.png" alt="Cricket">
+                    <div class="overlay">
+                        <h3>CRICKET</h3>
+                        <div class="btn-group">
+                            <a href="1criket.html" class="btn btn-outline-light">INFORMATION</a>
+                            <a href="register_player.php" class="btn btn-outline-light">REGISTER PLAYER</a>
+                            <a href="create_tournament.php" class="btn btn-outline-light">REGISTER TOURNAMENTS</a>
+                            <a href="cricketsetup.php" class="btn btn-outline-light">SCORECARD</a>
+                            <a href="cricket_rules.html" class="btn btn-outline-light">RULES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Football Box -->
+            <div class="col-md-6 mb-4 d-flex justify-content-center">
+                <div class="sports-box">
+                    <img src="football.png" alt="Football">
+                    <div class="overlay">
+                        <h3>FOOTBALL</h3>
+                        <div class="btn-group">
+                            <a href="1football.html" class="btn btn-outline-light">INFORMATION</a>
+                            <a href="register_player.php" class="btn btn-outline-light">REGISTER PLAYER</a>
+                            <a href="create_tournament.php" class="btn btn-outline-light">REGISTER TOURNAMENTS</a>
+                            <a href="footballsetup.php" class="btn btn-outline-light">SCORECARD</a>
+                            <a href="football_rules.html" class="btn btn-outline-light">RULES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hockey Box -->
+            <div class="col-md-6 mb-4 d-flex justify-content-center">
+                <div class="sports-box">
+                    <img src="hockey.png" alt="Hockey">
+                    <div class="overlay">
+                        <h3>HOCKEY</h3>
+                        <div class="btn-group">
+                            <a href="1hockey.html" class="btn btn-outline-light">INFORMATION</a>
+                            <a href="register_player.php" class="btn btn-outline-light">REGISTER PLAYER</a>
+                            <a href="create_tournament.php" class="btn btn-outline-light">REGISTER TOURNAMENTS</a>
+                            <a href="hockeysetup.php" class="btn btn-outline-light">SCORECARD</a>
+                            <a href="hockey_rules.html" class="btn btn-outline-light">RULES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4 d-flex justify-content-center">
+                <div class="sports-box">
+                    <img src="Basketball.png" alt="Basketball">
+                    <div class="overlay">
+                        <h3>BASKETBALL</h3>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-outline-light">INFORMATION</a>
+                            <a href="register_player.php" class="btn btn-outline-light">REGISTER PLAYER</a>
+                            <a href="create_tournament.php" class="btn btn-outline-light">REGISTER TOURNAMENTS</a>
+                            <a href="#" class="btn btn-outline-light">SCORECARD</a>
+                            <a href="basketball_rules.html" class="btn btn-outline-light">RULES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4 d-flex justify-content-center">
+                <div class="sports-box">
+                    <img src="golf.png" alt="golf">
+                    <div class="overlay">
+                        <h3>GOLF</h3>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-outline-light">INFORMATION</a>
+                            <a href="register_player.php" class="btn btn-outline-light">REGISTER PLAYER</a>
+                            <a href="create_tournament.php" class="btn btn-outline-light">REGISTER TOURNAMENTS</a>
+                            <a href="#" class="btn btn-outline-light">SCORECARD</a>
+                            <a href="gold_rules.html" class="btn btn-outline-light">RULES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4 d-flex justify-content-center">
+                <div class="sports-box">
+                    <img src="badminton.png" alt="badminton">
+                    <div class="overlay">
+                        <h3>BADMINTON</h3>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-outline-light">INFORMATION</a>
+                            <a href="register_player.php" class="btn btn-outline-light">REGISTER PLAYER</a>
+                            <a href="create_tournament.php" class="btn btn-outline-light">REGISTER TOURNAMENTS</a>
+                            <a href="#" class="btn btn-outline-light">SCORECARD</a>
+                            <a href="badminton_rules.html" class="btn btn-outline-light">RULES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4 d-flex justify-content-center">
+                <div class="sports-box">
+                    <img src="tennis.png" alt="tennis">
+                    <div class="overlay">
+                        <h3>TENNIS</h3>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-outline-light">INFORMATION</a>
+                            <a href="register_player.php" class="btn btn-outline-light">REGISTER PLAYER</a>
+                            <a href="create_tournament.php" class="btn btn-outline-light">REGISTER TOURNAMENTS</a>
+                            <a href="#" class="btn btn-outline-light">SCORECARD</a>
+                            <a href="tennis_rules.html" class="btn btn-outline-light">RULES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="logoo.png" alt="Your Logo">
+        
+            <div class="footer-contact">
+                <p>Phone: +92-3204619308</p>
+                <p>Whatsapp: +92-3204619308</p>
+
+            </div>
+            <div class="footer-copy">
+                <p>© 2024 FANTASY SPORTS MANAGEMENT SYSTEM. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS for Vertical Navigation -->
+    <script>
+        function openNav() {
+            document.getElementById("myVerticalNav").style.left = "0";
+        }
+
+        function closeNav() {
+            document.getElementById("myVerticalNav").style.left = "-250px";
+        }
+    </script>
+</body>
+
+</html>
